@@ -1,0 +1,5 @@
+#+TITLE: Spring Framework Book Club
+#+DESCRIPTION: Innovation week for July 2021
+#+AUTHOR: Jonathan Fairbanks
+
+This is a repository containing notes for lessons on the Spring Framework written in org mode.

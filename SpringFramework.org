@@ -1,0 +1,3 @@
+#+TITLE: Innovation week : Spring Framework Summary
+#+AUTHOR: Jonathan Fairbanks
+#+STARTUP: inlineimages

@@ -1,0 +1,93 @@
+#+TITLE: Innovation week : Spring framework
+#+AUTHOR: Jonathan Fairbanks
+#+STARTUP: inlineimages
+
+
+
+* PluralSight
+** Java Spring
+https://app.pluralsight.com/library/courses/spring-framework-spring-fundamentals/table-of-contents
+*** What is Spring
+**** Dependency Injection framework
+*** Spring configuration using Java
+**** @Beans
+decorator over methods
+
+by default they are singletons meaning it will only be called once
+**** Setter injection
+**** Constructor injection
+basically the same as setter except it's as constructor instead of a setter
+*** Scopes
+**** Singleton
+***** default bean scope
+***** One instantiation
+***** Single instance per Spring container
+***** Added with @Scope over method
+**** Prototype
+bean per request
+***** Per request
+***** Garunteed Uniq
+***** Added with @Prototype overmethod
+**** Web aware
+***** Request
+***** Session
+***** Global
+*** Autowired
+Makes things a lot easier since you do not have to call any of the set/constructor injection for services, as long as everything has the appropriate decorators above them
+**** @ComponentScan({""}) <- look for inside quote
+*** Stereotypes
+**** @Component
+**** @Repository
+**** @Service
+**** @Controller
+*** Advanced Bean Configuration
+****  Bean Lifecycle
+instantiation -> populate properties -> BeanNameAware -> BeanFactoryAware -> Pre initialization - BeanPostProcessors -> InitialaizeBean -> InitMethod -> Post init - BeanPostProcessors
+**** FactoryBean
+***** What?
+**** SpEL (Spring Expression Language)
+***** Manipualte object Graph
+***** Evaluate at runtime
+***** Security
+@Value("#{}") can be done run time which will be injected into code.
+**** Proxies
+***** @Transactional
+**** Profiles
+***** Adapt Environments
+***** Runtime Configuration
+***** @Profile("")
+***** Add into vm option
+-Dspring.profiles.active=profileName
+** Java Spring JPA
+** Other notes
+*** Keybinds
+**** Ctrl + Shift + O
+removes unused imports
+
+* Spring.io Docs
+** Framework Reference
+https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/overview.html
+*** Modules
+**** Core container
+contains core, beans, context, and expression language modules
+***** Core & Beans
+seperates configuration from dependecies
+***** Beans
+3 things
+****** Serializable
+****** something
+****** something
+***** Context
+access objects similar to (JNDI registry)
+****** JNDI Registry
+https://docs.oracle.com/javase/tutorial/jndi/overview/index.html
+Java Naming and Direcotry interface
+
+it is an API that provides naming and directory functionality
+[[./Resources/JNDI.png]]
+** The IoC Container
+https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/beans.html
+(IoC) Inversion of Control which describes the process of a container injecting dependecies when creating beans
+*** Factory Method
+a design pattern that describes making objects at run time. (where all objects share the superclass)
+* TutorialsPoint
