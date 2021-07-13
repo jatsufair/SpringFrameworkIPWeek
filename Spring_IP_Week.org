@@ -2,7 +2,7 @@
 #+AUTHOR: Jonathan Fairbanks
 #+STARTUP: inlineimages
 
-
+unorganized notes taken as I go.
 
 * PluralSight
 ** Java Spring
@@ -59,10 +59,28 @@ instantiation -> populate properties -> BeanNameAware -> BeanFactoryAware -> Pre
 ***** Add into vm option
 -Dspring.profiles.active=profileName
 ** Java Spring JPA
+*** Spring JPA
+**** Enhances JPA
+**** Simplifies Data Tier
+**** JpaRepository
+**** Query DSL
+**** Data Tier
+*** JPA (Java Persistence API)
+an object relation mapping - Relational tables <-> Software objects.
+[Honestly sounds a lot like entity framework from .NET]
+*** JPA Repository
+A repository in the repositories folder that is an interface that extends from JPARepository. and that is it.
+**** Spring repositories themselves do not need to be an interface
+**** DAO (Data Acess Object)
+*** Architecure
+#+attr_html: width=100px
+[[./Resources/RepoArchitecture.png][Repository Architecture]]
 ** Other notes
 *** Keybinds
 **** Ctrl + Shift + O
 removes unused imports
+*** PluralSight
+**** Leaving the RequestMapping blank?
 
 * Spring.io Docs
 ** Framework Reference
