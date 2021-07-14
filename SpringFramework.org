@@ -8,6 +8,7 @@
 * Spring Framework
 ** Spring overview
 Spring is a IoC (Inversion of Control) framework
+* JPA
 
 * Docs
 ** https://docs.spring.io/spring-framework/docs/current/reference/html/

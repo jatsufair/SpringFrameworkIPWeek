@@ -1,6 +1,5 @@
 #+TITLE: Innovation week : Spring framework
 #+AUTHOR: Jonathan Fairbanks
-#+STARTUP: inlineimages
 
 unorganized notes taken as I go.
 
@@ -75,12 +74,36 @@ A repository in the repositories folder that is an interface that extends from J
 *** Architecure
 #+attr_html: width=100px
 [[./Resources/RepoArchitecture.png][Repository Architecture]]
+*** Decorators
+**** @ID
+Pretty much the primary key of the data when represnted in tables on a DB
+***** GenerationType.
+https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage
+good stack overflow describing usage of each term
+****** Auto
+default and picks based on provider i.e hibernation -> sequence
+****** Identity
+uses DBs auto increment not good for hibernate since hibernate requires a primary key value for each entity.
+****** Sequence
+uses db unique but requires an additional select (almost no performance impact for most applications?)
+****** Table
+simulated sequence
+***** Database relationships
+You can specify where a part of an entity relates to another with JPA by adding decorators such as @ManyToOne @ManyToMany as such over parts of an object
+
 ** Other notes
 *** Keybinds
 **** Ctrl + Shift + O
 removes unused imports
 *** PluralSight
 **** Leaving the RequestMapping blank?
+*** Why is it called @Lob
+-> stores binary data
+*** Acronym purgatory
+**** JPA - Java Persistence API
+**** EJB - Enterpise Java Bean
+**** JNDI - Java Naming and Directory Interface
+**** JEE - Java Enterpise Edition
 
 * Spring.io Docs
 ** Framework Reference
@@ -109,3 +132,4 @@ https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/ht
 *** Factory Method
 a design pattern that describes making objects at run time. (where all objects share the superclass)
 * TutorialsPoint
+* MasterControl
