@@ -138,6 +138,10 @@ org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 ***** AUTO - Chooses from dialect
 ***** SEQUENCE - if database supports it
 ***** TABLE - uses identity table
+**** @PresistenceContext - injects EntityManager
+**** @Service - Location of business logic
+**** @Repository - Database Integration
+**** Transactional - Begining of Transaction
 *** Default columns
 @Column
 **** insertable
@@ -149,6 +153,26 @@ org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 **** table
 **** unique
 **** updatable
+*** Join Types
+**** @OneToOne
+**** @OneToMany
+**** @ManyToOne
+**** @ManyToMany
+*** FetchTypes
+**** Lazy
+**** Eager
+*** JPQL
+centered around objects
+ex:
+
+Query q = em.createQuery("Select r from Registration");
+
+where r is an object
+*** NamedQueries
+Cleaner but not required.
+@NamedQueries({
+    @NamedQuery(x=, y=)
+})
 
 ** Other notes
 *** Keybinds

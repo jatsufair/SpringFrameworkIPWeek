@@ -8,7 +8,18 @@
 * Spring Framework
 ** Spring overview
 Spring is a IoC (Inversion of Control) framework
-* JPA
+* JPA (Java Persistence API)
+** Defining Entities
+Entities are defined by their @Entity decorator over a class definition. it must include a @Id over a class attribute (probably some sort of Long or other number).
+after which the @GeneratedValue decorator usually follows
+*** @Entity
+Decorator that is placed over a class definition. which marks the object as a JPA Entity
+*** @Id
+The decorator that is
+
+* Annotations
+
+* MasterControl
 
 * Docs
 ** https://docs.spring.io/spring-framework/docs/current/reference/html/
