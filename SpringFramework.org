@@ -8,6 +8,8 @@
 Spring is a IoC (Inversion of Control) framework which is a design pattern that has the intention of removing dependencies from your code.
 
 Examples often showing between an object being isntantiated via setter or a constructor .
+** AOP (Aspect Oriented Programming)
+Spring is also what is called a Aspect oriented framework which means it seperates things out in a way. (described as cross cutting concerns) an example is having something like logging being part of the application running and the "business" logic written somewhere else.
 * JPA (Java Persistence API)
 ** Defining Entities (Models)
 Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.

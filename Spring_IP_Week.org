@@ -226,3 +226,8 @@ https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/ht
 a design pattern that describes making objects at run time. (where all objects share the superclass)
 * TutorialsPoint
 * MasterControl
+** Getter and Setter tags used on some entities
+** SLf4j
+**** Stands for Simple Logging Facade for Java
+very easy to remember
+** Table with schema parameter used a fair bit
