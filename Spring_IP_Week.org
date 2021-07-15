@@ -90,6 +90,28 @@ uses db unique but requires an additional select (almost no performance impact f
 simulated sequence
 ***** Database relationships
 You can specify where a part of an entity relates to another with JPA by adding decorators such as @ManyToOne @ManyToMany as such over parts of an object
+*** Seperation of Concerns
+**** Presentation Layer
+**** Business Logic
+**** Data Layer
+*** Components
+**** Controller
+handles request, no business logic
+coordinated with wservice and repository
+***** @Controller
+**** Service
+business logic belongs here
+transactional
+often same methods as the repository. So things such as if the result from a repository is empty do X
+described as the verbs of a system
+***** @Service
+
+**** Repository
+Data Access Object usually 1:1 to table, described as the "nouns" of the system
+***** @Repository
+*** Entity tagging
+**** @Entity
+marks it as something that is tied into a database
 
 ** Other notes
 *** Keybinds
@@ -104,6 +126,16 @@ removes unused imports
 **** EJB - Enterpise Java Bean
 **** JNDI - Java Naming and Directory Interface
 **** JEE - Java Enterpise Edition
+**** POJO - Plain Old Java Object
+**** AOP - Aspect oriented programming
+**** ORM - Object Relational Mapping
+**** Java Server Pages
+*** Best practices
+**** Singleton
+**** Factories
+**** Abstract Factories
+**** Template Method
+**** Annotation Based
 
 * Spring.io Docs
 ** Framework Reference
