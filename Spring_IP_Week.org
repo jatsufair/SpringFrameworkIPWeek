@@ -112,6 +112,43 @@ Data Access Object usually 1:1 to table, described as the "nouns" of the system
 *** Entity tagging
 **** @Entity
 marks it as something that is tied into a database
+**** @Id
+marks what field is the primary key
+**** @GeneratedValue
+what type of primary key
+*** Database Creation Values
+spring.jpa.hibernate.ddl-auto=
+**** Create
+**** Update
+**** Create-drop
+**** Validate
+**** None
+*** Application properties
+**** Forced uppercase tables
+spring.jpa.hibernate.naming.physical-strategy=
+
+org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+*** JPA Annotations
+**** @Entity - Declares Object
+**** @Table - Table specifics
+**** @Id - Primary key
+**** @GeneratedValue - Used with @Id
+***** IDENTITY - Column
+***** AUTO - Chooses from dialect
+***** SEQUENCE - if database supports it
+***** TABLE - uses identity table
+*** Default columns
+@Column
+**** insertable
+**** length
+**** name
+**** nullable
+**** precision
+**** scale
+**** table
+**** unique
+**** updatable
 
 ** Other notes
 *** Keybinds
