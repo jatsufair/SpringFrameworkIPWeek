@@ -5,9 +5,11 @@
 
 * Spring Framework
 ** Spring overview
-Spring is a IoC (Inversion of Control) framework
+Spring is a IoC (Inversion of Control) framework which is a design pattern that has the intention of removing dependencies from your code.
+
+Examples often showing between an object being isntantiated via setter or a constructor .
 * JPA (Java Persistence API)
-** Defining Entities
+** Defining Entities (Models)
 Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.
 *** Decorators
 **** @Entity
@@ -35,7 +37,76 @@ simulates sequence by using by using transactional locks which will reduce perfo
 **** Persistence variables must be private/protected and can only be modified by the entities methods
 **** Entities can extend or be extended by non entity classes
 **** If an entity is passed by value as a detached object the class needs to implement serializable
-* Annotations
+
+*** Example from https://spring.io/guides/gs/accessing-data-jpa/#initial:
+#+begin_java options
+package com.example.accessingdatajpa;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Customer {
+
+  @Id
+  @GeneratedValue(strategy=GenerationType.AUTO)
+  private Long id;
+  private String firstName;
+  private String lastName;
+
+  protected Customer() {}
+
+  public Customer(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "Customer[id=%d, firstName='%s', lastName='%s']",
+        id, firstName, lastName);
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+}
+
+#+end_java
+
+** Creating Queries
+the repository implementations are created automatically from an interface
+the interface incldues methods for saving, deleting and finding customer entities.
+
+with this this implementation of it does not need to be written after you write the interface.
+
+*** Example from https://spring.io/guides/gs/accessing-data-jpa/#initial:
+#+begin_java options
+package com.example.accessingdatajpa;
+
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CustomerRepository extends CrudRepository<Customer, Long> {
+
+  List<Customer> findByLastName(String lastName);
+
+  Customer findById(long id);
+}
+
+#+end_java
+
 
 * MasterControl
 
@@ -45,3 +116,4 @@ simulates sequence by using by using transactional locks which will reduce perfo
 * Good Stack overflow pages
 ** [1] https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage
 ** [2] https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa
+** [3] https://stackoverflow.com/questions/3058/what-is-inversion-of-control
