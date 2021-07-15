@@ -3,20 +3,38 @@
 #+STARTUP: inlineimages
 
 
-
-
 * Spring Framework
 ** Spring overview
 Spring is a IoC (Inversion of Control) framework
 * JPA (Java Persistence API)
 ** Defining Entities
-Entities are defined by their @Entity decorator over a class definition. it must include a @Id over a class attribute (probably some sort of Long or other number).
-after which the @GeneratedValue decorator usually follows
-*** @Entity
+Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.
+*** Decorators
+**** @Entity
 Decorator that is placed over a class definition. which marks the object as a JPA Entity
-*** @Id
-The decorator that is
+**** @Id
+The decorator that lets JPA know which of the objects ID is is its ID (Usually a Long or some other number)
+**** @GeneratedValue [1]
+This is paired with the @Id decorator and lets JPA know how the ID should be generated. ex: @GeneratedValue(strategy=GenerationType.AUTO)
 
+if this decorator is ommited it will selected AUTO as its generation type
+
+***** AUTO
+The default generation type and will be based on the persistence provider.
+***** IDENTITY
+Relies on an auto incremented database column and generates a new value for each insert operation. Not a good option for hibernate as it requires the insert immedietly reducing performance.
+***** SEQUENCE
+uses a database sequence to generate unique values, but requires an additonal select statement when doing so. via use of the @SequenceGenerator(x="",y="") or if that is ommitted it will request the next value from the default sequence.
+***** TABLE
+simulates sequence by using by using transactional locks which will reduce performance, use SEQUENCE if DB supports it
+
+*** Entity Requirements [2]
+**** Delcared with @Entity
+**** has a public/protected no args constructor
+**** Class, methods, and variables must not be declared Final
+**** Persistence variables must be private/protected and can only be modified by the entities methods
+**** Entities can extend or be extended by non entity classes
+**** If an entity is passed by value as a detached object the class needs to implement serializable
 * Annotations
 
 * MasterControl
@@ -24,3 +42,6 @@ The decorator that is
 * Docs
 ** https://docs.spring.io/spring-framework/docs/current/reference/html/
 ** https://www.tutorialspoint.com/spring/spring_overview.htm
+* Good Stack overflow pages
+** [1] https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage
+** [2] https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa

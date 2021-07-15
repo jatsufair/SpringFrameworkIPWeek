@@ -1,0 +1,87 @@
+% Created 2021-07-15 Thu 14:04
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usetheme{default}
+\author{Jonathan Fairbanks}
+\date{\today}
+\title{Innovation week : Spring Framework Summary}
+\hypersetup{
+ pdfauthor={Jonathan Fairbanks},
+ pdftitle={Innovation week : Spring Framework Summary},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+
+
+
+
+\begin{frame}[label={sec:orgacf0020}]{Spring Framework}
+\begin{block}{Spring overview}
+Spring is a IoC (Inversion of Control) framework
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org0d53779}]{JPA (Java Persistence API)}
+\begin{block}{Defining Entities}
+Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.
+\begin{block}{Decorators}
+\begin{block}{@Entity}
+Decorator that is placed over a class definition. which marks the object as a JPA Entity
+\end{block}
+\begin{block}{@Id}
+The decorator that
+\end{block}
+\end{block}
+\begin{block}{Entity Requirements [1]}
+\begin{block}{Delcared with @Entity}
+\end{block}
+\begin{block}{has a public/protected no args constructor}
+\end{block}
+\begin{block}{Class, methods, and variables must not be declared Final}
+\end{block}
+\begin{block}{Persistence variables must be private/protected and can only be modified by the entities methods}
+\end{block}
+\begin{block}{Entities can extend or be extended by non entity classes}
+\end{block}
+\begin{block}{If an entity is passed by value as a detached object the class needs to implement serializable}
+\end{block}
+\end{block}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgb43e8fe}]{Annotations}
+\end{frame}
+
+\begin{frame}[label={sec:org7867f2e}]{MasterControl}
+\end{frame}
+
+\begin{frame}[label={sec:org924ebd2}]{Docs}
+\begin{block}{\url{https://docs.spring.io/spring-framework/docs/current/reference/html/}}
+\end{block}
+\begin{block}{\url{https://www.tutorialspoint.com/spring/spring\_overview.htm}}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:orgc87e42f}]{Good Stack overflow pages}
+\begin{block}{[1] \url{https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa}}
+\end{block}
+\end{frame}
+\end{document}
