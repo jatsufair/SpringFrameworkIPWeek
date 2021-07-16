@@ -10,6 +10,8 @@ Spring is a IoC (Inversion of Control) framework which is a design pattern that 
 Examples often showing between an object being isntantiated via setter or a constructor .
 ** AOP (Aspect Oriented Programming)
 Spring is also what is called a Aspect oriented framework which means it seperates things out in a way. (described as cross cutting concerns) an example is having something like logging being part of the application running and the "business" logic written somewhere else.
+** Beans
+Beans are objects that are managed by Spring
 * JPA (Java Persistence API)
 ** Defining Entities (Models)
 Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.
@@ -31,6 +33,32 @@ Relies on an auto incremented database column and generates a new value for each
 uses a database sequence to generate unique values, but requires an additonal select statement when doing so. via use of the @SequenceGenerator(x="",y="") or if that is ommitted it will request the next value from the default sequence.
 ***** TABLE
 simulates sequence by using by using transactional locks which will reduce performance, use SEQUENCE if DB supports it
+**** @SequenceGenerator
+you can optionally specifiy additional arguments to
+**** @Column
+good practice to specify the name of a column in a table, can also specify the properties of a column
+| Identifier       | Data Type | Default |
+|------------------+-----------+---------|
+| name             | String    | ""      |
+| insertable       | Boolean   | true    |
+| length           | int       | 255     |
+| precision        | int       | 0       |
+| scale            | int       | 0       |
+| nullable         | Boolean   | true    |
+| columnDefinition | String    | ""      |
+| unique           | Boolean   | false   |
+| updatable        | Boolean   | true    |
+
+
+***** name : just the name of the column
+***** insertable : whether SQL insert statements can be used
+***** length : column length
+***** precision : decimal precision
+***** scale : scale for a decimal column
+***** nullable : Defines if it is nullable
+***** columnDefinition : change definition ex: varChar(256)
+***** unique : if it has a uniqueness constraint
+***** updatable : if SQL update statements can be used on it
 
 *** Entity Requirements [2]
 **** Delcared with @Entity
