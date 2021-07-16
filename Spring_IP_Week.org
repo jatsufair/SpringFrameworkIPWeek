@@ -70,10 +70,13 @@ an object relation mapping - Relational tables <-> Software objects.
 *** JPA Repository
 A repository in the repositories folder that is an interface that extends from JPARepository. and that is it.
 **** Spring repositories themselves do not need to be an interface
-**** DAO (Data Acess Object)
+**** DAO (Data Acess Object) focus
+**** Are interfaces, not classes
+**** map 1:1 with a JPA Entity
 *** Architecure
 #+attr_html: width=100px
 [[./Resources/RepoArchitecture.png][Repository Architecture]]
+code injection ->
 *** Decorators
 **** @ID
 Pretty much the primary key of the data when represnted in tables on a DB
@@ -97,7 +100,7 @@ You can specify where a part of an entity relates to another with JPA by adding 
 *** Components
 **** Controller
 handles request, no business logic
-coordinated with wservice and repository
+coordinated with service and repository
 ***** @Controller
 **** Service
 business logic belongs here
@@ -173,6 +176,57 @@ Cleaner but not required.
 @NamedQueries({
     @NamedQuery(x=, y=)
 })
+*** Query DSL (Domain Specific Language)
+method contracts
+
+**** Begins with
+(examples from video there are more things you can have such as countBy or findFirstBy)
+***** findBy
+***** queryBy
+***** readBy
+***** countBy
+***** getBy
+**** Uses JPA attributes names for criteria
+**** Multiple criteria combined with "And", "Or"
+**** Default for DSL is to use = on a query
+to change that you must have Is, Equals or Not as part of the method
+**** Other comparisons
+***** LessThan
+***** LessThanEqual
+***** GreaterThan
+***** GreaterThanEqual
+***** True
+***** False
+***** In
+***** NotIn
+***** IgnoreCase
+***** OrderBy
+***** First
+***** TopX <- X is a number
+***** Distinct
+**** Date Comparisons
+no beforeEqual or afterEqual keywords
+***** Before(startDate)
+***** After(startDate)
+***** Between(startDate, endDate)
+**** Null
+***** Null
+***** IsNull
+***** NotNull
+***** IsNotNull
+*** @Query
+when you hand write your query
+**** good for specific joining (left, right joins)
+**** eager loading control
+
+**** It is possible to use NativeQuery with "nativeQuery=true" in the parameters for the query, but kind of locks you in (No JPQL)
+**** NamedQuery
+queries that can be recalled elsewhere
+
+@NamedQuery(
+    name=""
+    query=""
+)
 
 ** Other notes
 *** Keybinds

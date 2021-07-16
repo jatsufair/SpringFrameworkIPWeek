@@ -37,6 +37,7 @@ simulates sequence by using by using transactional locks which will reduce perfo
 you can optionally specifiy additional arguments to
 **** @Column
 good practice to specify the name of a column in a table, can also specify the properties of a column
+
 | Identifier       | Data Type | Default |
 |------------------+-----------+---------|
 | name             | String    | ""      |
@@ -61,7 +62,7 @@ good practice to specify the name of a column in a table, can also specify the p
 ***** updatable : if SQL update statements can be used on it
 
 *** Entity Requirements [2]
-**** Delcared with @Entity
+**** Declared with @Entity
 **** has a public/protected no args constructor
 **** Class, methods, and variables must not be declared Final
 **** Persistence variables must be private/protected and can only be modified by the entities methods
@@ -115,6 +116,7 @@ public class Customer {
 
 #+end_java
 
+** Join Types
 ** Creating Queries
 the repository implementations are created automatically from an interface
 the interface incldues methods for saving, deleting and finding customer entities.
@@ -136,7 +138,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 }
 
 #+end_java
-
+* DSL Query
 
 * MasterControl
 
