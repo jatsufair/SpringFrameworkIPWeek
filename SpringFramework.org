@@ -149,3 +149,4 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 ** [1] https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage
 ** [2] https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa
 ** [3] https://stackoverflow.com/questions/3058/what-is-inversion-of-control
+** [4] https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api

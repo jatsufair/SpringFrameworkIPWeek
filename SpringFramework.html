@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-07-16 Fri 16:05 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Innovation week : Spring Framework Summary</title>
+<meta name="author" content="Jonathan Fairbanks" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Innovation week : Spring Framework Summary</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgefe07a3">1. Spring Framework</a>
+<ul>
+<li><a href="#orgba06ab8">1.1. Spring overview</a></li>
+<li><a href="#org020320d">1.2. AOP (Aspect Oriented Programming)</a></li>
+<li><a href="#org3b78da2">1.3. Beans</a></li>
+</ul>
+</li>
+<li><a href="#orgc83e2d3">2. JPA (Java Persistence API)</a>
+<ul>
+<li><a href="#org69a33c4">2.1. Defining Entities (Models)</a>
+<ul>
+<li><a href="#orga2866fe">2.1.1. Decorators</a></li>
+<li><a href="#org1158efb">2.1.2. Entity Requirements [2]</a></li>
+<li><a href="#orgf9efb09">2.1.3. Example from https://spring.io/guides/gs/accessing-data-jpa/#initial:</a></li>
+</ul>
+</li>
+<li><a href="#org61d2481">2.2. Join Types</a></li>
+<li><a href="#orgaa18c78">2.3. Creating Queries</a>
+<ul>
+<li><a href="#org58326e4">2.3.1. Example from https://spring.io/guides/gs/accessing-data-jpa/#initial:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org932ca70">3. DSL Query</a></li>
+<li><a href="#orgc3dbeaa">4. MasterControl</a></li>
+<li><a href="#org670f275">5. Docs</a>
+<ul>
+<li><a href="#orgd6402a2">5.1. https://docs.spring.io/spring-framework/docs/current/reference/html/</a></li>
+<li><a href="#org1e9979e">5.2. https://www.tutorialspoint.com/spring/spring_overview.htm</a></li>
+</ul>
+</li>
+<li><a href="#org2ebeeea">6. Good Stack overflow pages</a>
+<ul>
+<li><a href="#org34f82d9">6.1. [1] https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage</a></li>
+<li><a href="#orgbf9f9c1">6.2. [2] https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa</a></li>
+<li><a href="#org9ab983d">6.3. [3] https://stackoverflow.com/questions/3058/what-is-inversion-of-control</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgefe07a3" class="outline-2">
+<h2 id="orgefe07a3"><span class="section-number-2">1</span> Spring Framework</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-orgba06ab8" class="outline-3">
+<h3 id="orgba06ab8"><span class="section-number-3">1.1</span> Spring overview</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Spring is a IoC (Inversion of Control) framework which is a design pattern that has the intention of removing dependencies from your code.
+</p>
+
+<p>
+Examples often showing between an object being isntantiated via setter or a constructor .
+</p>
+</div>
+</div>
+<div id="outline-container-org020320d" class="outline-3">
+<h3 id="org020320d"><span class="section-number-3">1.2</span> AOP (Aspect Oriented Programming)</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Spring is also what is called a Aspect oriented framework which means it seperates things out in a way. (described as cross cutting concerns) an example is having something like logging being part of the application running and the &ldquo;business&rdquo; logic written somewhere else.
+</p>
+</div>
+</div>
+<div id="outline-container-org3b78da2" class="outline-3">
+<h3 id="org3b78da2"><span class="section-number-3">1.3</span> Beans</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Beans are objects that are managed by Spring
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc83e2d3" class="outline-2">
+<h2 id="orgc83e2d3"><span class="section-number-2">2</span> JPA (Java Persistence API)</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org69a33c4" class="outline-3">
+<h3 id="org69a33c4"><span class="section-number-3">2.1</span> Defining Entities (Models)</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.
+</p>
+</div>
+<div id="outline-container-orga2866fe" class="outline-4">
+<h4 id="orga2866fe"><span class="section-number-4">2.1.1</span> Decorators</h4>
+<div class="outline-text-4" id="text-2-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgcf6370d"></a>@Entity<br />
+<div class="outline-text-5" id="text-2-1-1-1">
+<p>
+Decorator that is placed over a class definition. which marks the object as a JPA Entity
+</p>
+</div>
+</li>
+<li><a id="org5b2a566"></a>@Id<br />
+<div class="outline-text-5" id="text-2-1-1-2">
+<p>
+The decorator that lets JPA know which of the objects ID is is its ID (Usually a Long or some other number)
+</p>
+</div>
+</li>
+<li><a id="org0e91e44"></a>@GeneratedValue [1]<br />
+<div class="outline-text-5" id="text-2-1-1-3">
+<p>
+This is paired with the @Id decorator and lets JPA know how the ID should be generated. ex: @GeneratedValue(strategy=GenerationType.AUTO)
+</p>
+
+<p>
+if this decorator is ommited it will selected AUTO as its generation type
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="orge91ca3a"></a>AUTO<br />
+<div class="outline-text-6" id="text-2-1-1-3-1">
+<p>
+The default generation type and will be based on the persistence provider.
+</p>
+</div>
+</li>
+<li><a id="org7de3168"></a>IDENTITY<br />
+<div class="outline-text-6" id="text-2-1-1-3-2">
+<p>
+Relies on an auto incremented database column and generates a new value for each insert operation. Not a good option for hibernate as it requires the insert immedietly reducing performance.
+</p>
+</div>
+</li>
+<li><a id="orge465f2a"></a>SEQUENCE<br />
+<div class="outline-text-6" id="text-2-1-1-3-3">
+<p>
+uses a database sequence to generate unique values, but requires an additonal select statement when doing so. via use of the @SequenceGenerator(x=&ldquo;&rdquo;,y=&ldquo;&rdquo;) or if that is ommitted it will request the next value from the default sequence.
+</p>
+</div>
+</li>
+<li><a id="org259d5a6"></a>TABLE<br />
+<div class="outline-text-6" id="text-2-1-1-3-4">
+<p>
+simulates sequence by using by using transactional locks which will reduce performance, use SEQUENCE if DB supports it
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgfe23f68"></a>@SequenceGenerator<br />
+<div class="outline-text-5" id="text-2-1-1-4">
+<p>
+you can optionally specifiy additional arguments to
+</p>
+</div>
+</li>
+<li><a id="orgbef1a46"></a>@Column<br />
+<div class="outline-text-5" id="text-2-1-1-5">
+<p>
+good practice to specify the name of a column in a table, can also specify the properties of a column
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Identifier</th>
+<th scope="col" class="org-left">Data Type</th>
+<th scope="col" class="org-left">Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">name</td>
+<td class="org-left">String</td>
+<td class="org-left">&ldquo;&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left">insertable</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">length</td>
+<td class="org-left">int</td>
+<td class="org-left">255</td>
+</tr>
+
+<tr>
+<td class="org-left">precision</td>
+<td class="org-left">int</td>
+<td class="org-left">0</td>
+</tr>
+
+<tr>
+<td class="org-left">scale</td>
+<td class="org-left">int</td>
+<td class="org-left">0</td>
+</tr>
+
+<tr>
+<td class="org-left">nullable</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">true</td>
+</tr>
+
+<tr>
+<td class="org-left">columnDefinition</td>
+<td class="org-left">String</td>
+<td class="org-left">&ldquo;&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left">unique</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">false</td>
+</tr>
+
+<tr>
+<td class="org-left">updatable</td>
+<td class="org-left">Boolean</td>
+<td class="org-left">true</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<ol class="org-ol">
+<li><a id="org3ed9fd3"></a>name : just the name of the column<br /></li>
+<li><a id="orgcf62da3"></a>insertable : whether SQL insert statements can be used<br /></li>
+<li><a id="org32a0ea4"></a>length : column length<br /></li>
+<li><a id="org3b4fbc6"></a>precision : decimal precision<br /></li>
+<li><a id="org6862f5a"></a>scale : scale for a decimal column<br /></li>
+<li><a id="org55b686b"></a>nullable : Defines if it is nullable<br /></li>
+<li><a id="orge16811d"></a>columnDefinition : change definition ex: varChar(256)<br /></li>
+<li><a id="org292eb66"></a>unique : if it has a uniqueness constraint<br /></li>
+<li><a id="orgd3e955f"></a>updatable : if SQL update statements can be used on it<br /></li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org1158efb" class="outline-4">
+<h4 id="org1158efb"><span class="section-number-4">2.1.2</span> Entity Requirements [2]</h4>
+<div class="outline-text-4" id="text-2-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="org9d91d67"></a>Declared with @Entity<br /></li>
+<li><a id="orgd932641"></a>has a public/protected no args constructor<br /></li>
+<li><a id="orgd42fe4f"></a>Class, methods, and variables must not be declared Final<br /></li>
+<li><a id="org16907a4"></a>Persistence variables must be private/protected and can only be modified by the entities methods<br /></li>
+<li><a id="org7831c7d"></a>Entities can extend or be extended by non entity classes<br /></li>
+<li><a id="orgb073278"></a>If an entity is passed by value as a detached object the class needs to implement serializable<br /></li>
+</ol>
+</div>
+
+<div id="outline-container-orgf9efb09" class="outline-4">
+<h4 id="orgf9efb09"><span class="section-number-4">2.1.3</span> Example from <a href="https://spring.io/guides/gs/accessing-data-jpa/#initial">https://spring.io/guides/gs/accessing-data-jpa/#initial</a>:</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<div class="java" id="orgbc46dd7">
+<p>
+package com.example.accessingdatajpa;
+</p>
+
+<p>
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+</p>
+
+<p>
+@Entity
+public class Customer {
+</p>
+
+<p>
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+private Long id;
+private String firstName;
+private String lastName;
+</p>
+
+<p>
+protected Customer() {}
+</p>
+
+<p>
+public Customer(String firstName, String lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+}
+</p>
+
+<p>
+@Override
+public String toString() {
+  return String.format(
+      &ldquo;Customer[id=%d, firstName=&rsquo;%s&rsquo;, lastName=&rsquo;%s&rsquo;]&rdquo;,
+      id, firstName, lastName);
+}
+</p>
+
+<p>
+public Long getId() {
+  return id;
+}
+</p>
+
+<p>
+public String getFirstName() {
+  return firstName;
+}
+</p>
+
+<p>
+  public String getLastName() {
+    return lastName;
+  }
+}
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org61d2481" class="outline-3">
+<h3 id="org61d2481"><span class="section-number-3">2.2</span> Join Types</h3>
+</div>
+<div id="outline-container-orgaa18c78" class="outline-3">
+<h3 id="orgaa18c78"><span class="section-number-3">2.3</span> Creating Queries</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+the repository implementations are created automatically from an interface
+the interface incldues methods for saving, deleting and finding customer entities.
+</p>
+
+<p>
+with this this implementation of it does not need to be written after you write the interface.
+</p>
+</div>
+
+<div id="outline-container-org58326e4" class="outline-4">
+<h4 id="org58326e4"><span class="section-number-4">2.3.1</span> Example from <a href="https://spring.io/guides/gs/accessing-data-jpa/#initial">https://spring.io/guides/gs/accessing-data-jpa/#initial</a>:</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<div class="java" id="org417c624">
+<p>
+package com.example.accessingdatajpa;
+</p>
+
+<p>
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+</p>
+
+<p>
+public interface CustomerRepository extends CrudRepository&lt;Customer, Long&gt; {
+</p>
+
+<p>
+List&lt;Customer&gt; findByLastName(String lastName);
+</p>
+
+<p>
+  Customer findById(long id);
+}
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org932ca70" class="outline-2">
+<h2 id="org932ca70"><span class="section-number-2">3</span> DSL Query</h2>
+</div>
+
+<div id="outline-container-orgc3dbeaa" class="outline-2">
+<h2 id="orgc3dbeaa"><span class="section-number-2">4</span> MasterControl</h2>
+</div>
+
+<div id="outline-container-org670f275" class="outline-2">
+<h2 id="org670f275"><span class="section-number-2">5</span> Docs</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-orgd6402a2" class="outline-3">
+<h3 id="orgd6402a2"><span class="section-number-3">5.1</span> <a href="https://docs.spring.io/spring-framework/docs/current/reference/html/">https://docs.spring.io/spring-framework/docs/current/reference/html/</a></h3>
+</div>
+<div id="outline-container-org1e9979e" class="outline-3">
+<h3 id="org1e9979e"><span class="section-number-3">5.2</span> <a href="https://www.tutorialspoint.com/spring/spring_overview.htm">https://www.tutorialspoint.com/spring/spring_overview.htm</a></h3>
+</div>
+</div>
+<div id="outline-container-org2ebeeea" class="outline-2">
+<h2 id="org2ebeeea"><span class="section-number-2">6</span> Good Stack overflow pages</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org34f82d9" class="outline-3">
+<h3 id="org34f82d9"><span class="section-number-3">6.1</span> [1] <a href="https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage">https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage</a></h3>
+</div>
+<div id="outline-container-orgbf9f9c1" class="outline-3">
+<h3 id="orgbf9f9c1"><span class="section-number-3">6.2</span> [2] <a href="https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa">https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa</a></h3>
+</div>
+<div id="outline-container-org9ab983d" class="outline-3">
+<h3 id="org9ab983d"><span class="section-number-3">6.3</span> [3] <a href="https://stackoverflow.com/questions/3058/what-is-inversion-of-control">https://stackoverflow.com/questions/3058/what-is-inversion-of-control</a></h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Jonathan Fairbanks</p>
+<p class="date">Created: 2021-07-16 Fri 16:05</p>
+</div>
+</body>
+</html>

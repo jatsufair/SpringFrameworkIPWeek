@@ -1,6 +1,6 @@
-% Created 2021-07-15 Thu 14:04
+% Created 2021-07-16 Fri 16:05
 % Intended LaTeX compiler: pdflatex
-\documentclass[presentation]{beamer}
+\documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -14,7 +14,6 @@
 \usepackage{amssymb}
 \usepackage{capt-of}
 \usepackage{hyperref}
-\usetheme{default}
 \author{Jonathan Fairbanks}
 \date{\today}
 \title{Innovation week : Spring Framework Summary}
@@ -28,60 +27,209 @@
 \begin{document}
 
 \maketitle
-\begin{frame}{Outline}
 \tableofcontents
-\end{frame}
 
 
 
+\section{Spring Framework}
+\label{sec:org4744956}
+\subsection{Spring overview}
+\label{sec:org3066e04}
+Spring is a IoC (Inversion of Control) framework which is a design pattern that has the intention of removing dependencies from your code.
 
-
-\begin{frame}[label={sec:orgacf0020}]{Spring Framework}
-\begin{block}{Spring overview}
-Spring is a IoC (Inversion of Control) framework
-\end{block}
-\end{frame}
-\begin{frame}[label={sec:org0d53779}]{JPA (Java Persistence API)}
-\begin{block}{Defining Entities}
+Examples often showing between an object being isntantiated via setter or a constructor .
+\subsection{AOP (Aspect Oriented Programming)}
+\label{sec:org09b0114}
+Spring is also what is called a Aspect oriented framework which means it seperates things out in a way. (described as cross cutting concerns) an example is having something like logging being part of the application running and the ``business'' logic written somewhere else.
+\subsection{Beans}
+\label{sec:org754b062}
+Beans are objects that are managed by Spring
+\section{JPA (Java Persistence API)}
+\label{sec:orge7c462d}
+\subsection{Defining Entities (Models)}
+\label{sec:orgba195e6}
 Entities are persistent domain objects that usually represent a table in a database. and each instance of an entity corresponds with a row.
-\begin{block}{Decorators}
-\begin{block}{@Entity}
+\subsubsection{Decorators}
+\label{sec:org974770d}
+\begin{enumerate}
+\item @Entity
+\label{sec:orged1d976}
 Decorator that is placed over a class definition. which marks the object as a JPA Entity
-\end{block}
-\begin{block}{@Id}
-The decorator that
-\end{block}
-\end{block}
-\begin{block}{Entity Requirements [1]}
-\begin{block}{Delcared with @Entity}
-\end{block}
-\begin{block}{has a public/protected no args constructor}
-\end{block}
-\begin{block}{Class, methods, and variables must not be declared Final}
-\end{block}
-\begin{block}{Persistence variables must be private/protected and can only be modified by the entities methods}
-\end{block}
-\begin{block}{Entities can extend or be extended by non entity classes}
-\end{block}
-\begin{block}{If an entity is passed by value as a detached object the class needs to implement serializable}
-\end{block}
-\end{block}
-\end{block}
-\end{frame}
-\begin{frame}[label={sec:orgb43e8fe}]{Annotations}
-\end{frame}
+\item @Id
+\label{sec:orgb874901}
+The decorator that lets JPA know which of the objects ID is is its ID (Usually a Long or some other number)
+\item @GeneratedValue [1]
+\label{sec:org5da3115}
+This is paired with the @Id decorator and lets JPA know how the ID should be generated. ex: @GeneratedValue(strategy=GenerationType.AUTO)
 
-\begin{frame}[label={sec:org7867f2e}]{MasterControl}
-\end{frame}
+if this decorator is ommited it will selected AUTO as its generation type
 
-\begin{frame}[label={sec:org924ebd2}]{Docs}
-\begin{block}{\url{https://docs.spring.io/spring-framework/docs/current/reference/html/}}
-\end{block}
-\begin{block}{\url{https://www.tutorialspoint.com/spring/spring\_overview.htm}}
-\end{block}
-\end{frame}
-\begin{frame}[label={sec:orgc87e42f}]{Good Stack overflow pages}
-\begin{block}{[1] \url{https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa}}
-\end{block}
-\end{frame}
+\begin{enumerate}
+\item AUTO
+\label{sec:org074045e}
+The default generation type and will be based on the persistence provider.
+\item IDENTITY
+\label{sec:orgc50e88d}
+Relies on an auto incremented database column and generates a new value for each insert operation. Not a good option for hibernate as it requires the insert immedietly reducing performance.
+\item SEQUENCE
+\label{sec:org0e93c3b}
+uses a database sequence to generate unique values, but requires an additonal select statement when doing so. via use of the @SequenceGenerator(x=``'',y=``'') or if that is ommitted it will request the next value from the default sequence.
+\item TABLE
+\label{sec:org43ead2e}
+simulates sequence by using by using transactional locks which will reduce performance, use SEQUENCE if DB supports it
+\end{enumerate}
+\item @SequenceGenerator
+\label{sec:orgd53c959}
+you can optionally specifiy additional arguments to
+\item @Column
+\label{sec:orge4fc54a}
+good practice to specify the name of a column in a table, can also specify the properties of a column
+
+\begin{center}
+\begin{tabular}{lll}
+Identifier & Data Type & Default\\
+\hline
+name & String & ``''\\
+insertable & Boolean & true\\
+length & int & 255\\
+precision & int & 0\\
+scale & int & 0\\
+nullable & Boolean & true\\
+columnDefinition & String & ``''\\
+unique & Boolean & false\\
+updatable & Boolean & true\\
+\end{tabular}
+\end{center}
+
+
+\begin{enumerate}
+\item name : just the name of the column
+\label{sec:orgbb45e5d}
+\item insertable : whether SQL insert statements can be used
+\label{sec:org8ed6b86}
+\item length : column length
+\label{sec:orga0d77a8}
+\item precision : decimal precision
+\label{sec:org2253097}
+\item scale : scale for a decimal column
+\label{sec:org6e154ec}
+\item nullable : Defines if it is nullable
+\label{sec:orgea1c7d9}
+\item columnDefinition : change definition ex: varChar(256)
+\label{sec:org58810cb}
+\item unique : if it has a uniqueness constraint
+\label{sec:orgf49fea8}
+\item updatable : if SQL update statements can be used on it
+\label{sec:org67558c4}
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Entity Requirements [2]}
+\label{sec:orgc06b7f5}
+\begin{enumerate}
+\item Declared with @Entity
+\label{sec:org0eda211}
+\item has a public/protected no args constructor
+\label{sec:org9921334}
+\item Class, methods, and variables must not be declared Final
+\label{sec:org35af7f2}
+\item Persistence variables must be private/protected and can only be modified by the entities methods
+\label{sec:org033e42e}
+\item Entities can extend or be extended by non entity classes
+\label{sec:org0fd55e1}
+\item If an entity is passed by value as a detached object the class needs to implement serializable
+\label{sec:orga901498}
+\end{enumerate}
+
+\subsubsection{Example from \url{https://spring.io/guides/gs/accessing-data-jpa/\#initial}:}
+\label{sec:org006c3de}
+\begin{java}
+package com.example.accessingdatajpa;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Customer \{
+
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+private Long id;
+private String firstName;
+private String lastName;
+
+protected Customer() \{\}
+
+public Customer(String firstName, String lastName) \{
+  this.firstName = firstName;
+  this.lastName = lastName;
+\}
+
+@Override
+public String toString() \{
+  return String.format(
+      ``Customer[id=\%d, firstName='\%s', lastName='\%s']'',
+      id, firstName, lastName);
+\}
+
+public Long getId() \{
+  return id;
+\}
+
+public String getFirstName() \{
+  return firstName;
+\}
+
+  public String getLastName() \{
+    return lastName;
+  \}
+\}
+\end{java}
+
+\subsection{Join Types}
+\label{sec:orgbb7d2be}
+\subsection{Creating Queries}
+\label{sec:org04ccee3}
+the repository implementations are created automatically from an interface
+the interface incldues methods for saving, deleting and finding customer entities.
+
+with this this implementation of it does not need to be written after you write the interface.
+
+\subsubsection{Example from \url{https://spring.io/guides/gs/accessing-data-jpa/\#initial}:}
+\label{sec:org03f7b84}
+\begin{java}
+package com.example.accessingdatajpa;
+
+import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CustomerRepository extends CrudRepository<Customer, Long> \{
+
+List<Customer> findByLastName(String lastName);
+
+  Customer findById(long id);
+\}
+\end{java}
+\section{DSL Query}
+\label{sec:org61b8ddc}
+
+\section{MasterControl}
+\label{sec:orgd8917e8}
+
+\section{Docs}
+\label{sec:org8ccfc64}
+\subsection{\url{https://docs.spring.io/spring-framework/docs/current/reference/html/}}
+\label{sec:orgaacf834}
+\subsection{\url{https://www.tutorialspoint.com/spring/spring\_overview.htm}}
+\label{sec:orgb24deb7}
+\section{Good Stack overflow pages}
+\label{sec:orgc443446}
+\subsection{[1] \url{https://stackoverflow.com/questions/47676403/spring-generatedvalue-annotation-usage}}
+\label{sec:org40e491e}
+\subsection{[2] \url{https://stackoverflow.com/questions/63414381/what-is-entity-in-spring-jpa}}
+\label{sec:orgabafd5b}
+\subsection{[3] \url{https://stackoverflow.com/questions/3058/what-is-inversion-of-control}}
+\label{sec:org01a6bd6}
 \end{document}
