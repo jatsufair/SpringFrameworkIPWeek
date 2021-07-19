@@ -214,6 +214,19 @@ no beforeEqual or afterEqual keywords
 ***** IsNull
 ***** NotNull
 ***** IsNotNull
+*** Locking
+**** Optimistic Locking
+**** Pessimistic Locking
+*** Audit
+provides an implementation for audits
+@EnableJpaAuditing
+**** @CreatedBy
+**** @LastModifiedBy
+**** @CreatedDate
+**** @LastModifiedDate
+*** Page and Sorting
+**** findAll(Sort sort)
+**** findAll(Pageable pageable)
 *** @Query
 when you hand write your query
 **** good for specific joining (left, right joins)

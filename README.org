@@ -3,3 +3,6 @@
 #+AUTHOR: Jonathan Fairbanks
 
 This is a repository containing notes for lessons on the Spring Framework written in org mode.
+
+The file Spring_IP_Week.org just contains notes as I went
+The file SpringFramework.org has more organized notes from what I was learning
